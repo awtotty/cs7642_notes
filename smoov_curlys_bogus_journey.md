@@ -2,29 +2,29 @@
 - only present matters
 - stationary model (rules of game don't change)
 
-___Problem___:
+__Problem__:
 - states : s
 - model : T(s,a,s') ~ Pr(s'|s,a)
 - actions
 - reward
 
-___Policy: a "solution" to a MDP problem___
+__Policy: a "solution" to a MDP problem__
 - pi(s) -> a (policy maps states to actions)
 - pi* maximized the total cummulative reward 
 
-___RL vs Supervised Learning___
+__RL vs Supervised Learning__
 - in SL the input is <s, a> tuples (a is correct action in s)
 - in RL the input is <s, a, r> tuples (r is reward for a in s)
 - MDPs have delayed rewards
 
-___Rewards___
+__Rewards__
 - temporal credit assingment problem: how to rate past choices in problems with delayed rewards
 - small negative reward in each state other than game ending states (goal/lava) trains the ideal policy (pi*) 
     - large positive reward makes a policy that avoids goal (since endless traversal is better)
     - large negative reward makes a policy that can choose the lava (positive of goal not enough to outweigh negative of long journey)
 - in MDPs minor changes matter
 
-___Sequences of Rewards___
+__Sequences of Rewards__
 - infinite vs finite horizons (this course is infinite only) 
 - utility of sequences: if U(s0, s1, ..) > U(s0, s1', ..), then U(s1, s2, ..) > (s1', s2', ..) 
     - note this is equivalent to the stationary model requirement of MDP
@@ -33,4 +33,4 @@ ___Sequences of Rewards___
         - "discounted rewards" - instead use U(s0, s1, ..) = SUM_t(gamma^t R(s_t)) where |gamma| < 1 -- this is a geo series that converges 
         - so U(s0, s1, ..) <= SUM_t(gamma^t R_max) = R_max/(1-gamma)
 
-Policies
+__Policies__
