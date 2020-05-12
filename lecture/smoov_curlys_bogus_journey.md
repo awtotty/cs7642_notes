@@ -3,14 +3,14 @@
 - stationary model (rules of game don't change)
 
 __Problem__:
-- states : s
-- model : T(s,a,s') ~ Pr(s'|s,a)
-- actions
-- reward
+- states : \(s\)
+- model : \(T(s,a,s') \sim Pr(s'|s,a)\)
+- actions : \(a\)
+- reward : \(R, R(s)\)
 
 __Policy: a "solution" to a MDP problem__
-- \pi(s) -> a (policy maps states to actions)
-- \pi* maximized the total cummulative reward 
+- \(\pi(s) \rightarrow a \) (policy maps states to actions)
+- \(\pi^*\) maximized the total cummulative reward 
 
 __RL vs Supervised Learning__
 - in SL the input is <s, a> tuples (a is correct action in s)
@@ -34,6 +34,6 @@ __Sequences of Rewards__
         - so U(s0, s1, ..) <= \sum_t(\gamma^t R_max) = R_max/(1-\gamma)
 
 __Policies__
-- \pi^* = argmax_pi E\[\sum_t(\gamma^t R(s_t)) | pi\] = the policy that maximizes expected value of reward
-- U^{\pi}(s) = E\[\sum_t(\gamma^t R(s_t)) | pi, s_0 = s\] != R(s) 
+- \(\pi^* = argmax_{\pi} E[\sum_t(\gamma^t R(s_t)) | \pi] = \) the policy that maximizes expected value of reward
+- \(U^{\pi}(s) = E[\sum_t(\gamma^t R(s_t)) | \pi, s_0 = s] \neq R(s) \)
 - Reward is immediate, utility is long term
