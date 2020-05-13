@@ -14,8 +14,8 @@ __Policy: a "solution" to a MDP problem__
 - <img src="https://latex.codecogs.com/gif.latex?&#x5C;pi^*"/> maximized the total cummulative reward 
   
 __RL vs Supervised Learning__
-- in SL the input is <img src="https://latex.codecogs.com/gif.latex?&lt;s,%20a&gt;"/> tuples (a is correct action in s)
-- in RL the input is <img src="https://latex.codecogs.com/gif.latex?&lt;s,%20a,%20r&gt;"/> tuples (r is reward for a in s)
+- in SL the input is <img src="https://latex.codecogs.com/gif.latex?&#x5C;langle%20s,%20a%20&#x5C;rangle"/> tuples (a is correct action in s)
+- in RL the input is <img src="https://latex.codecogs.com/gif.latex?&#x5C;langle%20s,%20a,%20r%20&#x5C;rangle"/> tuples (r is reward for a in s)
 - MDPs have delayed rewards
   
 __Rewards__
@@ -32,16 +32,16 @@ __Sequences of Rewards__
     - what is a good utility function? 
         - then <img src="https://latex.codecogs.com/gif.latex?U(s0,%20s1,%20..)%20=%20&#x5C;sum_t(R(s_t))"/>, but in this case any countably infinite sum is equivalent for unending games (if you live forever, it doesn't matter what you do)
         - "discounted rewards" - instead use <img src="https://latex.codecogs.com/gif.latex?U(s0,%20s1,%20..)%20=%20&#x5C;sum_t(&#x5C;gamma^t%20R(s_t))"/> where <img src="https://latex.codecogs.com/gif.latex?|&#x5C;gamma|%20&lt;%201"/> -- this is a geo series that converges 
-        - so <img src="https://latex.codecogs.com/gif.latex?U(s0,%20s1,%20..)%20&lt;=%20&#x5C;sum_t(&#x5C;gamma^t%20R_max)%20=%20R_max&#x2F;(1-&#x5C;gamma)"/>
+        - so <img src="https://latex.codecogs.com/gif.latex?U(s0,%20s1,%20..)%20&#x5C;leq%20&#x5C;sum_t(&#x5C;gamma^t%20R_{max})%20=%20R_{max}&#x2F;(1-&#x5C;gamma)"/>
   
 __Policies__
-- <img src="https://latex.codecogs.com/gif.latex?&#x5C;pi^*%20=%20argmax_{&#x5C;pi}%20E[&#x5C;sum_t{&#x5C;gamma^t%20R(s_t)}%20|%20&#x5C;pi]%20="/> the policy that maximizes expected value of reward
+- <img src="https://latex.codecogs.com/gif.latex?&#x5C;pi^*%20=%20&#x5C;text{argmax}_{&#x5C;pi}%20E[&#x5C;sum_t{&#x5C;gamma^t%20R(s_t)}%20|%20&#x5C;pi]%20="/> the policy that maximizes expected value of reward
 - <img src="https://latex.codecogs.com/gif.latex?U^{&#x5C;pi}(s)%20=%20E[&#x5C;sum_t{&#x5C;gamma^t%20R(s_t)}%20|%20&#x5C;pi,%20s_0%20=%20s]%20&#x5C;neq%20R(s)"/>
 - Reward is immediate, utility is long term value of policy
 - Usually we use <img src="https://latex.codecogs.com/gif.latex?U(s)%20=%20U^{&#x5C;pi^*}(s)"/> -- "true utility of a state"
-- <img src="https://latex.codecogs.com/gif.latex?&#x5C;pi^*(s)%20=%20argmax_a%20&#x5C;sum_{s&#x27;}{T(s,%20a,%20s&#x27;)%20U(s&#x27;)}"/>
+- <img src="https://latex.codecogs.com/gif.latex?&#x5C;pi^*(s)%20=%20&#x5C;text{argmax}_a%20&#x5C;sum_{s&#x27;}{T(s,%20a,%20s&#x27;)%20U(s&#x27;)}"/>
     - knowing true utility means you can find optimal policy
-- __Bellman Equation:__ <img src="https://latex.codecogs.com/gif.latex?U(s)%20=%20R(s)%20+%20&#x5C;gamma%20max_a%20&#x5C;sum_{s&#x27;}{T(s,%20a,%20s&#x27;)%20U(s&#x27;)}"/>
+- __Bellman Equation:__ <img src="https://latex.codecogs.com/gif.latex?U(s)%20=%20R(s)%20+%20&#x5C;gamma%20&#x5C;max_a%20&#x5C;sum_{s&#x27;}{T(s,%20a,%20s&#x27;)%20U(s&#x27;)}"/>
     - how to solve? n equations (one for each utilities) and n unknowns (utilities), but not linear equations (due to max)
     - algo to solve (__value iteration__):  (proof of convergence on slide 25 [here](https://s3.amazonaws.com/ml-class/notes/MDPIntro.pdf ))
         - start with arbitrary utilities
@@ -55,14 +55,14 @@ __Policies__
     - find policy (__policy iteration__): 
         - start with <img src="https://latex.codecogs.com/gif.latex?&#x5C;pi_0"/>
         - evaluate: given <img src="https://latex.codecogs.com/gif.latex?&#x5C;pi_t"/> calculate <img src="https://latex.codecogs.com/gif.latex?U_t%20=%20U^{&#x5C;pi_t}"/>, where <img src="https://latex.codecogs.com/gif.latex?U_t%20=%20R(s)%20+%20&#x5C;gamma%20&#x5C;sum_{s&#x27;}{T(s,%20&#x5C;pi_t(s),%20s&#x27;)%20U_t(s&#x27;)}%20="/> reward + gamma*expected utility 
-        - improve: <img src="https://latex.codecogs.com/gif.latex?&#x5C;pi_{t+1}%20=%20argmax_a%20&#x5C;sum{T(s,%20a,%20s&#x27;)%20U_t(s&#x27;)}"/>
+        - improve: <img src="https://latex.codecogs.com/gif.latex?&#x5C;pi_{t+1}%20=%20&#x5C;text{argmax}_a%20&#x5C;sum{T(s,%20a,%20s&#x27;)%20U_t(s&#x27;)}"/>
     - the algo above is now linear (no max to find <img src="https://latex.codecogs.com/gif.latex?U_t"/>)
   
 __More on Bellman__
 - other ways to express Bellman: 
-    - value of state <img src="https://latex.codecogs.com/gif.latex?=%20V(s)%20=%20max_a%20(R(s,a)%20+%20&#x5C;gamma%20&#x5C;sum_{s&#x27;}{T(s,a,s&#x27;)V(s&#x27;)})"/>
-    - quality of a state,action <img src="https://latex.codecogs.com/gif.latex?=%20Q(s,a)%20=%20R(s,a)%20+%20&#x5C;gamma%20&#x5C;sum_{s&#x27;}{T(s,a,s&#x27;)%20~%20max_{a&#x27;}Q(s&#x27;,a&#x27;)}"/>  --  useful when you don't know R and T
-    - continuation of state,action <img src="https://latex.codecogs.com/gif.latex?=%20C(s,a)%20=%20&#x5C;gamma%20&#x5C;sum_{s&#x27;}{T(s,a,s&#x27;)%20~%20max_{a&#x27;}(R(s&#x27;,a&#x27;)+C(s&#x27;,a&#x27;))}"/>
+    - value of state <img src="https://latex.codecogs.com/gif.latex?=%20V(s)%20=%20&#x5C;max_a%20(R(s,a)%20+%20&#x5C;gamma%20&#x5C;sum_{s&#x27;}{T(s,a,s&#x27;)V(s&#x27;)})"/>
+    - quality of a state,action <img src="https://latex.codecogs.com/gif.latex?=%20Q(s,a)%20=%20R(s,a)%20+%20&#x5C;gamma%20&#x5C;sum_{s&#x27;}{T(s,a,s&#x27;)%20~%20&#x5C;max_{a&#x27;}Q(s&#x27;,a&#x27;)}"/>  --  useful when you don't know R and T
+    - continuation of state,action <img src="https://latex.codecogs.com/gif.latex?=%20C(s,a)%20=%20&#x5C;gamma%20&#x5C;sum_{s&#x27;}{T(s,a,s&#x27;)%20~%20&#x5C;max_{a&#x27;}(R(s&#x27;,a&#x27;)+C(s&#x27;,a&#x27;))}"/>
 - Ex. ![https://classroom.udacity.com/courses/ud600/lessons/4100878601/concepts/41234786540923](../images/relating_bellmans.png )
     Soln: ![https://classroom.udacity.com/courses/ud600/lessons/4100878601/concepts/41234786540923](../images/relating_bellmans_soln.png ) 
   
