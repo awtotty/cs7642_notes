@@ -41,6 +41,18 @@ __Evaluation Criteria__
     - see pg. 17 for popular objective functions 
     - note $\gamma$ dictacts how much a reward is worth in the future, i.e., a reward $r$ received $t$ steps in the futures is worth $\gamma^t r$ (Littman uses $\beta$ here)
 - planning algos 
+- RL algos
+    - truly optimal RL agent maximizes objective function under the restriction that its knowledge of the env is incomplete (believed to be untractable except in trivial case) __is this still true?__
+    - *regret* : amount of additional reward an algo would have received if it had used the optimal policy from the start
+    - "good" algos converge to optimal policy, "bad" don't -- comparing rate of convergence is hard
+
+__Thesis Summary__
+The following models are explored and improved in this thesis: 
+- MDP (new analysis of complexity of policy-iteration algo - see [notes](../rendered/smoov_curlys_bogus_journey.pdf))
+- Generalized MDP (new model and new proof of convergence of RL in this model)
+- Alternating Markov games (first convergence proof for RL)
+- Markov games
+- Information-state MDP
 
 
 
