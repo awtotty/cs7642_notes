@@ -47,7 +47,7 @@ __Policies__
         - update utilities based on neighbors
         - repeat update step until convergence
     - Ex. ![https://classroom.udacity.com/courses/ud600/lessons/4100878601/concepts/6512308860923](../images/find_policy.png) 
-        notes: Don't forget the transition probabilities: 0.8 of going in the desired direction, and 0.1 of going in each of the directions at 90-degrees, \(U_0(green) = 1\), ~ \(U_0(red) = -1\)
+        notes: Don't forget the transition probabilities: 0.8 of going in the desired direction, and 0.1 of going in each of the directions at 90-degrees, \(U_0(green) = 1\), \(U_0(red) = -1\)
         - \(U_1(x) = -0.04 + 0.5[0 + 0 + 0.8*1] = 0.36\)
         - \(U_2(x) = -0.04 + 0.5((0.1)(-0.4) + (0.1)(0.36) + 0.8*1) = 0.376\)
     - the optimal policy can be found even if the true utility is not found (order of actions is all that is needed)
