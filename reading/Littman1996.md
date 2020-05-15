@@ -42,7 +42,16 @@ __Evaluation Criteria__
     - note $\gamma$ dictacts how much a reward is worth in the future, i.e., a reward $r$ received $t$ steps in the futures is worth $\gamma^t r$ (Littman uses $\beta$ here)
 - planning algos 
 - RL algos
-    - truly optimal RL agent maximizes objective function under the restriction that its knowledge of the env is incomplete (believed to be untractable except in trivial case) __is this still true?__
+    - truly optimal RL agent maximizes objective function under the restriction that its knowledge of the env is incomplete (believed to be untractable except in trivial case) __is this still true?__ 
+        - from Farrukh Rahman @23: 
+        > "Yeah when there is only 1 state it can be considered a multi-armed bandit. With a single state we want to select the action (aka pull the arm) that gives us the best expected reward, however we may not have any a priori knowledge of which action to take.
+        > Two natural methods emerge
+        > 1. take each action many times and build an expectation of what each actions reward is. this would be exploration
+        > 2. use our knowledge so far and take the action that has the best looking data (ie. maximize likelihood) which is exploitation. This knowledge may be incomplete eg. we only took each action once
+        > There is opportunity cost/regret in each action we take. ie. we cant explore all the time because we lose expected reward, neither can we exploit because we may not have enough confidence in our estimates. We want to balance exploration vs exploitation to obtain the best action while still performing as well as we possible can.
+        > The Gittins theorem/index incorporates this information (how much we know about an arm (how well we've sampled it) vs the maximum likelihood) into a scalar value we can use to do this. ie. we are doing as well as we can while still learning the best action to take.
+        > In regards to generalizing this outside bandits (>1 states), I do not believe that it the case. Moreover in lectures Littman advises to be cautious with this question as researchers have spent considerable effort trying to generalize it unsuccessfully (Lectures were done in 2015, perhaps some breakthroughs have been made since then but I'm not aware of any).
+        > Bandits & Gittins will be covered in the course (lesson 8), and are also covered in Sutton Chpt2.
     - *regret* : amount of additional reward an algo would have received if it had used the optimal policy from the start
     - "good" algos converge to optimal policy, "bad" don't -- comparing rate of convergence is hard
 
