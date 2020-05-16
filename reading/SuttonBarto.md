@@ -41,7 +41,7 @@ __1.7__
 
 
 ## Ch 3 
-- in bandits we estimate value of $q_*(a)$ of each action $a$, in MDPs we estimate the avlue of $q_*(s,a) of each action in each state or $v_*(s)$ of each state given optimal action
+- in bandits we estimate value of $q_*(a)$ of each action $a$, in MDPs we estimate the avlue of $q_*(s,a)$ of each action in each state or $v_*(s)$ of each state given optimal action
 - the added state requirement in MDPs allows credit-assingment for long-term consequences
 __3.1__
 - practice problems and examples of representing problems as MDPs
