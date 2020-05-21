@@ -63,5 +63,18 @@ The following models are explored and improved in this thesis:
 - Markov games
 - Information-state MDP
 
+### Ch 2
+- MDP is a model of an agent interacting synchoronously with its environment
+- there is never uncertainty about agent's current state (perfect perceptual abilities)
+- most of the rules for infinite-horizon discounted MDPs apply to undiscounted problems in which agents are guaranteed to reach a zero-reward terminal absorbing state
+- finite-horizon vs infinite-horizon: 
+    - finite: rarely a stationary optimal policy
+    - infinite: because the expected distance to horizon is constant ($\frac{1}{1-\beta}$), there is no need to change strategies as function of time (i.e. there is a stationary optimal policy)
+- note that time indices decrease to final state ($\langle \pi_k^*, ... ,,\pi_1^*\rangle$)
 
+__Value Iteration__
+- Bellman error magnitude: if $|V_t(s) - V_{t-1}(s)| < \epsilon$ for all $s$, then $\max_{s \in S} |V_t(s) - V_{t-1}(s)| < 2\epsilon \frac{\beta}{1-\beta}$
 
+__Policy Iteration__
+- $V^*(s) \geq V_t(s)$ for all $s$. So $V_t$ converges to $V^*$ from below. 
+- policy iteration can converge in fewer iterations than value iteration, __but__, the it requires more computation per iteration and often takes longer in practice
