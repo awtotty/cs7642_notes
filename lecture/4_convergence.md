@@ -17,3 +17,5 @@
 - The Bellman operator is a contraction mapping
 - max is a non-expansion, $|\max_a f(a) - \max_a g(a)| \leq \max_a |f(a)-g(a)|$ (note, these are 3 diff $a$ values)
     - the proof of this is cool
+
+
