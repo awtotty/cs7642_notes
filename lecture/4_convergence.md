@@ -18,4 +18,8 @@
 - max is a non-expansion, $|\max_a f(a) - \max_a g(a)| \leq \max_a |f(a)-g(a)|$ (note, these are 3 diff $a$ values)
     - the proof of this is cool
 
-
+### Recap
+- Contractions and non-expansions
+    - Order-statistics (max, min, etc)
+    - **Fixed** convex combinations (must be fixed)
+    - Coco-Q learning is **not** a non-expansion, but converges
